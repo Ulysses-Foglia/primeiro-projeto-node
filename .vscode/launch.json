@@ -15,7 +15,8 @@
       ],
       "outFiles": [
         "${workspaceFolder}/**/*.js"
-      ]
+      ],
+      "editor.formatOnSave": true,
     }
   ]
 }
