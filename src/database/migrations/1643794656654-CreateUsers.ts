@@ -1,12 +1,11 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-/* Precisei excluir [ ] do nome da classe --> [CreateAppointments]1643277174756 */
-export default class CreateAppointments1643277174756 implements MigrationInterface {
+export default class CreateUsers1643794656654 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: 'appointments',
+                name: 'users',
                 columns: [
                     {
                     name: 'id',
@@ -16,14 +15,17 @@ export default class CreateAppointments1643277174756 implements MigrationInterfa
                     default: 'uuid_generate_v4()'
                 },
                 {
-                    name: 'provider',
-                    type: 'varchar',
-                    isNullable: false
+                    name: 'name',
+                    type: 'varchar'
                 },
                 {
-                    name: 'date',
-                    type: 'timestamp with time zone',
-                    isNullable: false
+                    name: 'email',
+                    type: 'varchar',
+                    isUnique: true
+                },
+                {
+                    name: 'password',
+                    type: 'varchar'
                 },
                 {
                     name: 'created_at',
@@ -41,7 +43,7 @@ export default class CreateAppointments1643277174756 implements MigrationInterfa
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('appointments');
+        await queryRunner.dropTable('users');
     }
- 
+
 }
